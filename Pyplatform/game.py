@@ -14,15 +14,25 @@ class Game:
     # Hàm xử lý khi người chơi thua (hết mạng hoặc rơi khỏi màn chơi)
     def _game_lose(self, player):
         player.game_over = True  # Cập nhật trạng thái game kết thúc
+        small_font = pygame.font.Font(None, 24)
         message = self.font.render('You Lose...', True, self.message_color)  # Tạo thông điệp "Thua cuộc"
+        score_msg = self.font.render(f"Your Score: {player.score}", True, self.message_color)
+        reset_msg = small_font.render("Press Enter To Play Again", True, pygame.Color("black"))
         self.screen.blit(message, (WIDTH // 3 + 70, 70))  # Hiển thị thông báo trên màn hình
+        self.screen.blit(score_msg, (WIDTH // 3, 70 + 120))
+        self.screen.blit(reset_msg, (WIDTH // 3, 70 + 240))
 
     # Hàm xử lý khi người chơi thắng (đạt mục tiêu)
     def _game_win(self, player):
         player.game_over = True  # Cập nhật trạng thái game kết thúc
         player.win = True  # Đánh dấu người chơi đã thắng
+        small_font = pygame.font.Font(None, 24)
         message = self.font.render('You Win!!', True, self.message_color)  # Tạo thông điệp "Thắng cuộc"
+        score_msg = self.font.render(f"Your Score: {player.score}", True, self.message_color)
+        reset_msg = small_font.render("Press Enter To Play Again", True, pygame.Color("black"))
         self.screen.blit(message, (WIDTH // 3, 70))  # Hiển thị thông báo trên màn hình
+        self.screen.blit(score_msg,(WIDTH // 3, 70 + 120))
+        self.screen.blit(reset_msg, (WIDTH // 3, 70 + 240))
 
     # Hàm kiểm tra trạng thái game: Thua, thắng hoặc tiếp tục
     def game_state(self, player, goal):
