@@ -10,15 +10,16 @@
 world_map = [
     '                                                                  ',
     '                                                                  ',
-    '                t  t                                              ',
-    '        X     XXXXXXXXXs                   XX   X                 ',
-    ' tXXXt     XX         XX                XXXX tt XX                ',
+    '                t ctc                                             ',
+    '        X     XXXXXXXXXs                   XX   X     c           ',
+    ' tXXXt     XX      c  XX                XXXX ttcXX   c            ',
     ' XX XX                                      XXXXX                 ',
-    '          Xt    t           t  t   X                            G ',
-    '        XXXXXX  XXXXs    XXXXXXXXXXX  XX              tt t     XXX',
+    '      c   Xtc   t     c     t c t   X         c                 G ',
+    '        XXXXXX  XXXXs    XXXXXXXXXXX  XX    c    ttct     XXX   X ',
     ' P   XX  X XX X  X XXXt     X XX  XX  XXX  XXXXXXXXs  XXXXXX      ',
     'XXXXXXX  X  X X  X  XXXXXXXXX XX  XX  XXX  XX XX XXXXXXX  X       ',
 ]
+
 
 # Kích thước của mỗi ô (tile) trong bản đồ.
 tile_size = 50  # Mỗi ô có kích thước 50x50 pixel.

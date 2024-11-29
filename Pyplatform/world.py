@@ -5,6 +5,7 @@ from trap import Trap  # Lớp Trap (bẫy)
 from goal import Goal  # Lớp Goal (đích đến)
 from player import Player  # Lớp Player (người chơi)
 from game import Game  # Lớp Game (quản lý trạng thái trò chơi)
+from coin import Coin
 
 # Lớp World: Quản lý toàn bộ thế giới trò chơi
 class World:
@@ -23,6 +24,7 @@ class World:
         self.traps = pygame.sprite.Group()  # Nhóm các bẫy
         self.player = pygame.sprite.GroupSingle()  # Nhóm chứa người chơi (duy nhất một sprite)
         self.goal = pygame.sprite.GroupSingle()  # Nhóm chứa mục tiêu (đích đến)
+        self.coins = pygame.sprite.Group()
 
         for row_index, row in enumerate(layout):  # Duyệt từng dòng trong dữ liệu
             for col_index, cell in enumerate(row):  # Duyệt từng ô trong dòng
@@ -33,6 +35,9 @@ class World:
                 elif cell == "t":  # Bẫy
                     tile = Trap((x + (tile_size // 4), y + (tile_size // 4)), tile_size // 2)
                     self.traps.add(tile)
+                elif cell == "c":
+                    tile = Coin((x + (tile_size // 4), y + (tile_size // 4)), tile_size // 2)
+                    self.coins.add(tile)
                 elif cell == "P":  # Người chơi
                     player_sprite = Player((x, y))
                     self.player.add(player_sprite)
@@ -122,6 +127,13 @@ class World:
                     player.rect.x -= tile_size
                 player.life -= 1  # Giảm mạng sống của người chơi
 
+    def _handle_coins(self):
+        player = self.player.sprite
+        for coin in self.coins.sprites():
+            if coin.rect.colliderect(player.rect):
+                coin.kill()  # Loại bỏ đồng xu khỏi nhóm
+                player.score += 10  # Cộng điểm
+
     # Phương thức update: Cập nhật trạng thái thế giới và hiển thị
     def update(self, player_event):
         self._handle_restart()  # Kiểm tra và xử lý nhấn phím "Enter"
@@ -134,6 +146,10 @@ class World:
         self.traps.update(self.world_shift)
         self.traps.draw(self.screen)
 
+        # Cập nhật đồng xu
+        self.coins.update(self.world_shift)
+        self.coins.draw(self.screen)  # Vẽ đồng xu trên màn hình
+
         # Cập nhật và hiển thị đích đến
         self.goal.update(self.world_shift)
         self.goal.draw(self.screen)
@@ -144,8 +160,11 @@ class World:
         self._horizontal_movement_collision()
         self._vertical_movement_collision()
         self._handle_traps()
+        self._handle_coins()
         self.player.update(player_event)
         self.game.show_life(self.player.sprite)  # Hiển thị mạng sống
+        self.game.show_score(self.player.sprite)
         self.player.draw(self.screen)
 
         self.game.game_state(self.player.sprite, self.goal.sprite)  # Kiểm tra trạng thái trò chơi
+

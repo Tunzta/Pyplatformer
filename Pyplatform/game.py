@@ -43,3 +43,8 @@ class Game:
         for life in range(player.life):  # Lặp qua số mạng còn lại
             indent += life_size  # Tăng khoảng cách cho mỗi mạng sống
             self.screen.blit(life_image, (indent, life_size))  # Hiển thị ảnh mạng sống lên màn hình
+
+    def show_score(self, player):
+        font = pygame.font.SysFont('Arial', 20)
+        score_text = font.render(f'Score: {player.score}', True, (0, 0, 0))
+        self.screen.blit(score_text, (10, 60))

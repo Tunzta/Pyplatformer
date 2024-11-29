@@ -28,6 +28,8 @@ class Player(pygame.sprite.Sprite):
         self.on_left = False  # Kiểm tra người chơi có chạm tường trái
         self.on_right = False  # Kiểm tra người chơi có chạm tường phải
 
+        self.score = 0
+
     # Hàm tải các tài nguyên hình ảnh (hoạt ảnh) cho nhân vật
     def _import_character_assets(self):
         character_path = "assets/player/"  # Đường dẫn thư mục chứa hình ảnh nhân vật
