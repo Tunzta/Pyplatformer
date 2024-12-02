@@ -16,7 +16,6 @@ class Coin(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)
 
     def animate(self):
-        """Xử lý hoạt ảnh cho đồng xu."""
         self.frame_index += self.animation_speed  # Tăng chỉ số khung hình
         if self.frame_index >= len(self.coin_img):  # Nếu vượt quá số khung hình, quay lại khung đầu tiên
             self.frame_index = 0
@@ -27,6 +26,5 @@ class Coin(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)  # Cập nhật lại mask cho hình ảnh mới
 
     def update(self, world_shift):
-        """Cập nhật vị trí và hoạt ảnh của đồng xu."""
         self.rect.x += world_shift  # Di chuyển theo thế giới
         self.animate()  # Gọi phương thức animate để cập nhật khung hình

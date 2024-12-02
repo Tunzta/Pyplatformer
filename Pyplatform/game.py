@@ -55,6 +55,6 @@ class Game:
             self.screen.blit(life_image, (indent, life_size))  # Hiển thị ảnh mạng sống lên màn hình
 
     def show_score(self, player):
-        font = pygame.font.SysFont('Arial', 20)
+        font = pygame.font.SysFont('impact', 25)
         score_text = font.render(f'Score: {player.score}', True, (0, 0, 0))
         self.screen.blit(score_text, (10, 60))

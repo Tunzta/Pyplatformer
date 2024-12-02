@@ -6,19 +6,22 @@
 # - 'G': Cổng đích (Goal) để hoàn thành màn chơi.
 # - 't': Cây hoặc vật trang trí khác.
 # - 's': Gạch đặc biệt hoặc điểm nhấn (ví dụ: điểm dừng hoặc đối tượng đặc biệt khác).
+# - 'c': Vị trí của đồng xu.
 
 world_map = [
-    '                                                                  ',
-    '                                                                  ',
-    '                t ctc                                             ',
-    '        X     XXXXXXXXXs                   XX   X     c           ',
-    ' tXXXt     XX      c  XX                XXXX ttcXX   c            ',
-    ' XX XX                                      XXXXX                 ',
-    '      c   Xtc   t     c     t c t   X         c                 G ',
-    '        XXXXXX  XXXXs    XXXXXXXXXXX  XX    c    ttct     XXX   X ',
-    ' P   XX  X XX X  X XXXt     X XX  XX  XXX  XXXXXXXXs  XXXXXX      ',
-    'XXXXXXX  X  X X  X  XXXXXXXXX XX  XX  XXX  XX XX XXXXXXX  X       ',
+    ' ' * 240,
+    ' ' * 240,
+    '                t ctc        t      cc           c    c            c                           c cc  cc  ',
+    '        X     XXXXXXXXXs  X  XX    XXX           XX   X     c   X       X       X  c   X       XX XX XX  ',
+    ' tXXXt     XX      c  XX                XXXX ttcXX   c            c                XXXXXX XX X           ',
+    ' XX XX                                      XXXXX         tc      X  X     c   Xtt  X      c            G',
+    '      c   Xtc   t     c     t c t   X         c        XXXXX  X           X  tXt    X   tXc  t ct  XXX  X',
+    '        XXXXXX  XXXXs    XXXXXXXXXXX  XX    c     tct     XXX   X  XX X      ttt  XXXXXX  XX cXXXXs      ',
+    ' P   XX  X XX X  X XXXt     X XX  XX  XXX  XXXXXXXXs  XXXXXX     c        t   XXXXXXXXXXXXX  XX          ',
+    'XXXXXXX  X  X X  X  XXXXXXXXX XX  XX  XXX  XX XX XXXXXXX  X     XX  X         tt   XX X  X    XXXXXX     ',
 ]
+
+
 
 
 # Kích thước của mỗi ô (tile) trong bản đồ.
