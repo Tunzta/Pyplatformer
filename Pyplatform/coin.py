@@ -1,7 +1,7 @@
 import pygame
 from support import import_sprite
 
-
+# Lớp Coin: Đại diện cho một đồng xu (coin)
 class Coin(pygame.sprite.Sprite):
     def __init__(self, position, size):
         super().__init__()
